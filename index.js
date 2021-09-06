@@ -1,3 +1,5 @@
+const { Response } = require("./response");
+
 const animeList = require("./anime-list.js");
 const createWibuImage = require("./create-image.js");
 const express = require("express");
@@ -14,11 +16,7 @@ app.use(express.json());
 app.set("json spaces", 2);
 
 app.get("/", (req, res) => {
-	res.status(200).send({
-		status: 200,
-		message: "Successful",
-		data: null
-	});
+	return res.status(200).send(new Response(200, "Successful"));
 });
 
 app.get("/v1/wibu/create", async (req, res) => {
@@ -28,11 +26,7 @@ app.get("/v1/wibu/create", async (req, res) => {
 	let color = req.query.mau_nen || null;
 
 	if (imageId && title && signature) {
-		if (!animeList[imageId]) return res.status(400).send({
-			status: 400,
-			message: "Invalid character id",
-			data: null
-		});
+		if (!animeList[imageId]) return res.status(400).send(new Response(400, "Invalid character ID"));
 
 		var imgUrl = animeList[imageId].imgAnime.replace(/s120/g, "s0");
 		var imgColor = animeList[imageId].colorBg;
@@ -43,11 +37,7 @@ app.get("/v1/wibu/create", async (req, res) => {
 		res.set("Content-Type", "image/png");
 		res.status(200).send(imageBuffer);
 	} else {
-		res.status(400).send({
-			status: 400,
-			message: "Missing parameters",
-			data: null
-		});
+		res.status(400).send(new Response(400, "Missing parameters"));
 	}
 });
 
@@ -64,11 +54,7 @@ app.get("/v1/wibu/list", (req, res) => {
 		}
 	});
 
-	res.status(200).send({
-		status: 200,
-		message: "Successful",
-		data: mappedAnimeList
-	});
+	res.status(200).send(new Response(200, "Successful", mappedAnimeList));
 });
 
 const server = app.listen(process.env.PORT || 3000, () => {
