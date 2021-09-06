@@ -13,6 +13,14 @@ app.use(express.json());
 
 app.set("json spaces", 2);
 
+app.get("/", (req, res) => {
+	res.status(200).send({
+		status: 200,
+		message: "Successful",
+		data: null
+	});
+});
+
 app.get("/v1/wibu/create", async (req, res) => {
 	let imageId = req.query.id_nhanvat || null;
 	let title = req.query.chu_nen || null;
@@ -22,7 +30,8 @@ app.get("/v1/wibu/create", async (req, res) => {
 	if (imageId && title && signature) {
 		if (!animeList[imageId]) return res.status(400).send({
 			status: 400,
-			message: "Invalid character id"
+			message: "Invalid character id",
+			data: null
 		});
 
 		var imgUrl = animeList[imageId].imgAnime.replace(/s120/g, "s0");
@@ -36,7 +45,8 @@ app.get("/v1/wibu/create", async (req, res) => {
 	} else {
 		res.status(400).send({
 			status: 400,
-			message: "Missing parameters"
+			message: "Missing parameters",
+			data: null
 		});
 	}
 });
@@ -56,7 +66,8 @@ app.get("/v1/wibu/list", (req, res) => {
 
 	res.status(200).send({
 		status: 200,
-		message: mappedAnimeList
+		message: "Successful",
+		data: mappedAnimeList
 	});
 });
 
