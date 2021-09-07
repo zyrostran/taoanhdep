@@ -12,7 +12,6 @@ registerFont(path.join(process.cwd(), "assets", "steelfish.ttf"), {
 /** Register fonts */
 
 module.exports = (imgUrl, title, signature, colorBg) => {
-  console.log(imgUrl, title, signature, colorBg);
   return new Promise((resolve, reject) => {
     var a = new Image();
     a.src =

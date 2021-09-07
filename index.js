@@ -33,7 +33,18 @@ app.get("/v1/wibu/create", async (req, res) => {
 
 		if (!color) color = imgColor || "black";
 
-		let imageBuffer = await createWibuImage(imgUrl, title, signature, color);
+		let imageBuffer;
+		console.log(`==========\nCreating image with data\nIMG_URL: ${imageUrl}\nIMG_COLOR: ${imgColor}\nTITLE: ${title}\nSIGNATURE: ${signature}\n==========`);
+
+		try {
+			imageBuffer = await createWibuImage(imgUrl, title, signature, color);
+		} catch (err) {
+			res.status(500).send(new Response(500, "Internal server error"));
+			console.error(`Error when creating image`, err);
+		}
+
+		console.log(`Done!`);
+
 		res.set("Content-Type", "image/png");
 		res.status(200).send(imageBuffer);
 	} else {
