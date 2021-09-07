@@ -1,17 +1,17 @@
 const { Response } = require("./response");
-
 const animeList = require("./anime-list.js");
 const createWibuImage = require("./create-image.js");
+
+const morgan = require("morgan");
 const express = require("express");
 
 const app = express();
 
 console.log(`Loaded ${animeList.length} anime characters`);
 
-app.use(express.urlencoded({
-	extended: false
-}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(morgan("common"));
 
 app.set("json spaces", 2);
 
