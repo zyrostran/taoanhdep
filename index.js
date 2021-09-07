@@ -34,7 +34,7 @@ app.get("/v1/wibu/create", async (req, res) => {
 		if (!color) color = imgColor || "black";
 
 		let imageBuffer;
-		console.log(`==========\nCreating image with data\nIMG_URL: ${imageUrl}\nIMG_COLOR: ${imgColor}\nTITLE: ${title}\nSIGNATURE: ${signature}\n==========`);
+		console.log(`==========\nCreating image with data\nIMG_URL: ${imgUrl}\nIMG_COLOR: ${imgColor}\nTITLE: ${title}\nSIGNATURE: ${signature}\n==========`);
 
 		try {
 			imageBuffer = await createWibuImage(imgUrl, title, signature, color);
