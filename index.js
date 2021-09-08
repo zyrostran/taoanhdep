@@ -42,8 +42,6 @@ app.get("/v1/wibu/create", async (req, res) => {
 			console.error(`Error when creating image`, err);
 		}
 
-		console.log(`Done!`);
-
 		res.set("Content-Type", "image/png");
 		res.status(200).send(imageBuffer);
 	} else {
@@ -60,7 +58,7 @@ app.get("/v1/wibu/list", (req, res) => {
 				.replace(/-/g, " ")
 				.replace(/.png/g, ""),
 			backgroundColor: el.bgColor,
-			imageUrl: el.imgAnime
+			imageUrl: el.imgAnime.replace(/s120/g, "s0")
 		}
 	});
 
