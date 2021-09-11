@@ -11,7 +11,7 @@ console.log(`Loaded ${animeList.length} anime characters`);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(morgan("common"));
+app.use(morgan("combined"));
 
 app.set("json spaces", 2);
 
