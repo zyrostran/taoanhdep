@@ -36,7 +36,7 @@ app.get("/v1/wibu/create", async (req, res) => {
 		let imageBuffer;
 
 		try {
-			imageBuffer = await createWibuImage(imgUrl, title, signature, color);
+			imageBuffer = await createWibuImage(encodeURI(imgUrl), title, signature, color);
 		} catch (err) {
 			res.status(500).send(new Response(500, "Internal server error"));
 			console.error(`Error when creating image`, err);
