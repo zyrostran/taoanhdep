@@ -1,5 +1,5 @@
-const { Response } = require("./response");
-const animeList = require("./anime-list.js");
+const { Response } = require("./response.js");
+const animeList = require("./assets/anime-list.js");
 const createWibuImage = require("./create-image.js");
 
 const morgan = require("morgan");
