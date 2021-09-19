@@ -15,8 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(morgan("combined"));
 
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true }));
-
 app.get("/v1/wibu/create", async (req, res) => {
 	let imageId = req.query.id_nhanvat || null;
 	let title = req.query.chu_nen || null;
@@ -62,6 +60,8 @@ app.get("/v1/wibu/list", (req, res) => {
 
 	res.status(200).send(new Response(200, "Successful", mappedAnimeList));
 });
+
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true }));
 
 const server = app.listen(process.env.PORT || 3000, () => {
 	console.log(`Server started and listening on port ${server.address().port}`);
