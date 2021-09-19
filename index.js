@@ -4,20 +4,18 @@ const createWibuImage = require("./create-image.js");
 
 const morgan = require("morgan");
 const express = require("express");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 
 const app = express();
 
-console.log(`Loaded ${animeList.length} anime characters`);
+app.set("json spaces", 2);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(morgan("combined"));
 
-app.set("json spaces", 2);
-
-app.get("/", (req, res) => {
-	return res.status(200).send(new Response(200, "Successful"));
-});
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true }));
 
 app.get("/v1/wibu/create", async (req, res) => {
 	let imageId = req.query.id_nhanvat || null;
@@ -68,3 +66,5 @@ app.get("/v1/wibu/list", (req, res) => {
 const server = app.listen(process.env.PORT || 3000, () => {
 	console.log(`Server started and listening on port ${server.address().port}`);
 });
+
+console.log(`Loaded ${animeList.length} anime characters`);
