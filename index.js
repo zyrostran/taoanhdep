@@ -20,6 +20,16 @@ app.use("/v2/anime-avatar", require("./routes/v2/anime-avatar"));
 
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true }));
 
+app.use((err, req, res, next) => {
+	err.statusCode = err.statusCode || 500;
+	err.statusMessage = err.statusMessage || "Internal server error";
+
+	res.status(err.statusCode).json(new Response(err.statusCode, err.statusMessage, {
+		errorMessage: (err.name ? err.name + ": ": "") + err.message,
+		//errorStack: err.stack ? err.stack.split("\n"): ""
+	}));
+});
+
 app.use(function (req, res, next) {
 	res.status(404).send(new Response(404, "Uhh, what?", null));
 });
