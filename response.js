@@ -1,3 +1,9 @@
+/**
+ * Response data
+ * @param {string} statusCode - status code to response (default: 500)
+ * @param {string} statusMessage - message to response (default: "Internal server error")
+ * @param {any} data - data to response (default: null)
+ */
 class Response {
     constructor(statusCode, statusMessage, data) {
         this.status = statusCode || 500;
@@ -7,10 +13,10 @@ class Response {
 }
 
 /**
- * Return a response
- * @param {number} statusCode - status code to (return default: 500)
- * @param {string} statusMessage - message to (return default: Internal server error)
- * @param {any} data - data to return (default: null)
+ * Response data too, but it's v2
+ * @param {number} statusCode - status code to response (return default: 500)
+ * @param {string} statusMessage - message to response (return default: Internal server error)
+ * @param {any} data - data to response (default: null)
  */
 class Response_v2 {
     constructor(statusCode, statusMessage, data) {

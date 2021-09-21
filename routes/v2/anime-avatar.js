@@ -55,7 +55,7 @@ router.get("/list", (req, res) => {
           });
      } catch {
           res.status(500).send(new Response());
-          console.error(`Error when map anime list`, err);
+          console.error(`Error when mapping anime list`, err);
      }
      res.status(200).send(new Response(200, "Successful", mappedAnimeList));
 });
