@@ -1,6 +1,7 @@
 module.exports = [{
 	imgAnime: "https://kaysil.dev/hy-tomboy.png",
-	colorBg: "#45f248"
+	colorBg: "#45f248",
+	source: "Kaysil"
 }, {
 	imgAnime: "https://1.bp.blogspot.com/-w9EzCw6GH9I/YUXPAfgxqOI/AAAAAAAAxWc/PJT2hm8IyA01FnFFZag6JJuuWtt6yqVUACNcBGAsYHQ/s120/azusa.png",
 	colorBg: "#346cfd"

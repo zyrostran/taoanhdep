@@ -1,5 +1,4 @@
-const { Response } = require("./response.js");
-
+const { Response_v2: Response } = require("./response.js");
 
 const morgan = require("morgan");
 const express = require("express");
@@ -10,12 +9,20 @@ const app = express();
 
 app.set("json spaces", 2);
 
-app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 
+/** Routes */
 app.use("/v1/wibu", require("./routes/v1/wibu"));
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true }));
+app.use("/v2/anime-avatar", require("./routes/v2/anime-avatar"));
+/** Routes */
+
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true }));
+
+app.use(function (req, res, next) {
+	res.status(404).send(new Response(404, "Uhh, what?", null));
+});
 
 const server = app.listen(process.env.PORT || 3000, () => {
 	console.log(`Server started and listening on port ${server.address().port}`);

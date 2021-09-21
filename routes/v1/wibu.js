@@ -43,7 +43,7 @@ router.get("/list", (req, res) => {
 				.substring(el.imgAnime.lastIndexOf("/") + 1, el.imgAnime.length)
 				.replace(/-/g, " ")
 				.replace(/.png/g, ""),
-			backgroundColor: el.bgColor,
+			backgroundColor: el.colorBg,
 			imageUrl: el.imgAnime.replace(/s120/g, "s0")
 		}
 	});

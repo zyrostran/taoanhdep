@@ -7,7 +7,7 @@ registerFont(path.join(process.cwd(), "assets", "mtd.ttf"), {
 });
 
 registerFont(path.join(process.cwd(), "assets", "steelfish.ttf"), {
-  family: "Steelfish",
+  family: "SteelfishRg-Regular",
 });
 /** Register fonts */
 
@@ -48,14 +48,14 @@ module.exports = (imgUrl, title, signature, colorBg) => {
 
         d.strokeStyle = "white";
         d.lineWidth = 7;
-        d.font = "450px Steelfish";
+        d.font = "450px SteelfishRg-Regular";
         d.textAlign = "center";
         d.strokeText(t2, c.width / 2, 900);
         d.restore();
         d.save();
 
         d.fillStyle = "rgb(255 255 255 / 70%)";
-        d.font = "450px Steelfish";
+        d.font = "450px SteelfishRg-Regular";
         d.textAlign = "center";
         d.fillText(t2, c.width / 2, 1350);
         d.restore();
@@ -63,7 +63,7 @@ module.exports = (imgUrl, title, signature, colorBg) => {
 
         d.strokeStyle = "white";
         d.lineWidth = 7;
-        d.font = "450px Steelfish";
+        d.font = "450px SteelfishRg-Regular";
         d.textAlign = "center";
         d.strokeText(t2, c.width / 2, 1800);
         d.restore();
