@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 
 /** Routes */
+app.use("/", require("./routes/index"));
 app.use("/v1/wibu", require("./routes/v1/wibu"));
 app.use("/v2/anime-avatar", require("./routes/v2/anime-avatar"));
 /** Routes */
