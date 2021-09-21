@@ -39,7 +39,7 @@ router.post("/create", async (req, res) => {
 
 router.get("/list", (req, res) => {
      let mappedAnimeList;
-js
+     
      try {
           mappedAnimeList = animeList.map((el, i) => {
                return {
